@@ -1,1 +1,32 @@
+import random
+
+# Generate random number between 1 and 100
+secret = random.randint(1, 100)
+attempts = 0
+max_attempts = 7  # Limit for challenge
+
+print("Guess the number (1-100)! You have 7 attempts.")
+
+while attempts < max_attempts:
+    try:
+        guess = int(input("Enter your guess: "))
+        attempts += 1
+        
+        if guess == secret:
+            print(f"Correct! You won in {attempts} attempts.")
+            break
+        elif guess < secret:
+            print("Too low! Try higher.")
+        else:
+            print("Too high! Try lower.")
+            
+        remaining = max_attempts - attempts
+        if remaining > 0:
+            print(f"{remaining} attempts left.\n")
+        else:
+            print(f"Game over! The number was {secret}.")
+            
+    except ValueError:
+        print("Invalid input! Enter a number.\n")
+        attempts -= 1  # Don't count invalid guesses
 
